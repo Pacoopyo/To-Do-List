@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
+        <input type="text" id="taskinput" placeholder="Adicionar nova tarefa...">
+        <button id="addTaskButton">Adicionar Tarefa</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded',() =>{
+        const input = document.getElementById('taskinput');
+        const addButton = document.getElementById('addTaskButton');
+        const taskList = document.getElementById('taskList');
+
+        addButton.addEventListener('click', () => {
+            const taskText = input.value.trim();
+            if (taskText !== ''){
+                const taskItem = document.createElement('li');
+                taskItem.textContent = taskText;
+                taskList.appendChild(taskItem);
+                input.value ='';
+            }
+        }
+        );
+
+        taskList.addEventListener('click',(event) => {
+            if (event.target.tagName === 'LI') {
+                event.target.remove();
+            }
+        });
+        });
+    </script>
+   
+</body>
+</html>
